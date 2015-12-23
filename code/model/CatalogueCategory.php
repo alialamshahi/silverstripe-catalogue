@@ -34,7 +34,7 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
 
     private static $has_one = array(
 		'Parent'        => 'CatalogueCategory',
-		'Photo'		 => 'Image'
+		'MainPhoto'     => 'Image'
     );
 
     private static $many_many = array(
@@ -330,7 +330,7 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
                         $url_field,
                         TreeDropdownField::create('ParentID',_t('CatalogueAdmin.ParentCategory', 'Parent Category'), 'CatalogueCategory')
                             ->setLabelField("Title"),
-						$Photo = UploadField::create('Photo'),
+						$MainPhoto = UploadField::create('MainPhoto'),
 						HTMLEditorField::create('Introduction', $this->fieldLabel('Content'))
                             ->setRows(20)
                             ->addExtraClass('stacked'),
@@ -351,6 +351,12 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
                     )
                 )
             );
+			
+			// Set folder for image
+			$MainPhoto->setFolderName('category-photos');
+			$MainPhoto->getValidator()->setAllowedExtensions(array(
+				'png','gif','jpeg','jpg'
+			));
             
             // Help text for MetaData on page content editor
             $metaFieldDesc
@@ -379,12 +385,6 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
                         ->addComponent(new GridFieldOrderableRows('SortOrder'))
                 )
             );
-			
-			// Set folder for image
-			$Photo->setFolderName('category-photos');
-			$Photo->getValidator()->setAllowedExtensions(array(
-				'png','gif','jpeg','jpg'
-			));
         }
 		
 		

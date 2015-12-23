@@ -4,7 +4,7 @@ $Breadcrumbs
 <% end_if %>
 <section class="jumbotron">
   <div class="container">
-    <% with $Photo %>
+    <% with $MainPhoto %>
     <div class="col-md-12 jumbotron-bg" style="background-image:url($URL)">
       <% end_with %>
       <div class="row">
