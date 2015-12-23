@@ -379,12 +379,14 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
                         ->addComponent(new GridFieldOrderableRows('SortOrder'))
                 )
             );
+			
+			// Set folder for image
+			$Photo->setFolderName('category-photos');
+			$Photo->getValidator()->setAllowedExtensions(array(
+				'png','gif','jpeg','jpg'
+			));
         }
-        
-		$Photo->setFolderName('category-photos');
-		$Photo->getValidator()->setAllowedExtensions(array(
-			'png','gif','jpeg','jpg'
-		));
+		
 		
         $this->extend('updateCMSFields', $fields);
 
