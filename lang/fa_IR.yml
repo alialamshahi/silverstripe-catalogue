@@ -1,0 +1,43 @@
+fa_IR:
+  Catalogue:
+    DefaultProductImage: 'تصویر پیش‌فرض محصول'
+    Disable: غیرفعال
+    DisableProduct: 'غیرفعال نمودن این محصول (در سایت به نمایش درنمی‌آید)'
+    Disabled: 'غیرفعال‌شده %s %s'
+    Enable: فعال
+    Enabled: 'فعال‌شده %s %s'
+    FilterBy: 'پالایش براساس'
+    NewCategory: 'مجموعه جدید'
+    NewProduct: 'محصول جدید'
+    None: هیچ‌کدام
+    Price: قیمت
+    RelatedProducts: 'محصولات مرتبط'
+    SelectCategoryType: 'انتخاب یک نوع مجموعه'
+    SelectProductType: 'انتخاب یک نوع محصول'
+    StockIDHelp: 'به‌عنوان SKU مثال، یک محصول'
+    TaxExcludes: مانع‌شدن
+    TaxIncludes: شامل‌بودن
+    TaxRates: 'نرخ‌های عوارض'
+  CatalogueAdmin:
+    AddCategory: 'افزودن مجموعه'
+    AddProduct: 'افزودن محصول'
+    CategoryType: 'نوع مجموعه'
+    MetaDescHelp: 'موتورهای جستجو از این محتوا جهت نمایش نتایج استفاده می‌کنند (البته تاثیری در رتبه‌ی نمایش ندارد).'
+    MetaExtraHelp: 'کدهای  برای متاداده‌های دیگر، به‌طور مثال: &lt;meta name="customName" content="your custom content here" /&gt;'
+    MetadataToggle: متاداده‌
+    ParentCategory: 'مجموعه والد'
+    ProductType: 'نوع محصول'
+    MENUTITLE: کاتالوگ
+  CatalogueCategory:
+    PLURALNAME: 'مجموعه‌های کاتالوگ'
+    SINGULARNAME: 'مجموعه‌ی کاتالوگ'
+  CatalogueProduct:
+    PLURALNAME: 'محصولات کاتالوگ'
+    SINGULARNAME: 'محصول کاتالوگ'
+  GridField:
+    NewRecord: 'جدید %s'
+  SearchForm:
+    SearchResults: 'نتایج جستجو'
+  TaxRate:
+    PLURALNAME: 'نرخ‌های عوارض'
+    SINGULARNAME: 'نرخ عوارض'
