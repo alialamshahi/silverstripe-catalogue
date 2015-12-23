@@ -330,7 +330,7 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
                         $url_field,
                         TreeDropdownField::create('ParentID',_t('CatalogueAdmin.ParentCategory', 'Parent Category'), 'CatalogueCategory')
                             ->setLabelField("Title"),
-						$uploader = UploadField::create('Photo'),
+						$Photo = UploadField::create('Photo'),
 						HTMLEditorField::create('Introduction', $this->fieldLabel('Content'))
                             ->setRows(20)
                             ->addExtraClass('stacked'),
@@ -381,8 +381,8 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
             );
         }
         
-		$uploader->setFolderName('category-photos');
-		$uploader->getValidator()->setAllowedExtensions(array(
+		$Photo->setFolderName('category-photos');
+		$Photo->getValidator()->setAllowedExtensions(array(
 			'png','gif','jpeg','jpg'
 		));
 		
