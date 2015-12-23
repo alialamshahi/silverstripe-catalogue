@@ -26,13 +26,15 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
         "Title"             => "Varchar",
         "URLSegment"        => "Varchar",
         "Sort"              => "Int",
+		"Introduction"      => "HTMLText",
         "MetaDescription"   => "Text",
         "ExtraMeta"         => "HTMLText",
         "Disabled"          => "Boolean"
     );
 
     private static $has_one = array(
-        'Parent'        => 'CatalogueCategory'
+		'Parent'        => 'CatalogueCategory',
+		'Photo'		 => 'Image'
     );
 
     private static $many_many = array(
@@ -328,6 +330,10 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
                         $url_field,
                         TreeDropdownField::create('ParentID',_t('CatalogueAdmin.ParentCategory', 'Parent Category'), 'CatalogueCategory')
                             ->setLabelField("Title"),
+						$uploader = UploadField::create('Photo'),
+						HTMLEditorField::create('Introduction', $this->fieldLabel('Content'))
+                            ->setRows(20)
+                            ->addExtraClass('stacked'),
                         ToggleCompositeField::create('Metadata', _t('CatalogueAdmin.MetadataToggle', 'Metadata'),
                             array(
                                 $metaFieldDesc = TextareaField::create("MetaDescription", $this->fieldLabel('MetaDescription')),
@@ -335,6 +341,7 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
                             )
                         )->setHeadingLevel(4)
                     ),
+					
                     $tabSettings = new Tab('Settings',
                         DropdownField::create(
                             "ClassName",
@@ -374,6 +381,11 @@ class CatalogueCategory extends DataObject implements PermissionProvider {
             );
         }
         
+		$uploader->setFolderName('category-photos');
+		$uploader->getValidator()->setAllowedExtensions(array(
+			'png','gif','jpeg','jpg'
+		));
+		
         $this->extend('updateCMSFields', $fields);
 
         return $fields;

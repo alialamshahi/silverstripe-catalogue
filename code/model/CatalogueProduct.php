@@ -31,14 +31,18 @@ class CatalogueProduct extends DataObject implements PermissionProvider {
     private static $description = "A standard catalogue product";
     
     private static $db = array(
-        "Title"             => "Varchar(255)",
-        "StockID"           => "Varchar",
-        "BasePrice"         => "Currency",
-        "URLSegment"        => "Varchar",
-        "Content"           => "HTMLText",
-        "MetaDescription"   => "Text",
-        "ExtraMeta"         => "HTMLText",
-        "Disabled"          => "Boolean"
+        "Title"              => "Varchar(255)",
+        "StockID"            => "Varchar",
+		"Dimension"          => "Text",
+		"Designer"           => "Text",
+        "BasePrice"          => "Currency",
+        "URLSegment"         => "Varchar",
+        "Content"            => "HTMLText",
+        "MetaDescription"    => "Text",
+        "ExtraMeta"          => "HTMLText",
+        "Disabled"           => "Boolean",
+		"FeaturedOnHomepage" => "Boolean",
+		"FeaturedType"	   => "Varchar",
     );
     
     private static $has_one = array(
@@ -78,7 +82,9 @@ class CatalogueProduct extends DataObject implements PermissionProvider {
         "BasePrice"     => "Price",
         "TaxRate.Amount"=> "Tax Percent",
         "CategoriesList"=> "Categories",
-        "Disabled"      => "Disabled"
+        "Disabled"      => "Disabled",
+		"FeaturedOnHomepage.Nice" => "Featured?",
+		"FeaturedType"  => "Emphasis"
     );
 
     private static $searchable_fields = array(
@@ -405,6 +411,12 @@ class CatalogueProduct extends DataObject implements PermissionProvider {
                     $tabMain = new Tab('Main',
                         TextField::create("Title", $this->fieldLabel('Title')),
                         $url_field,
+						TextField::create('Dimention','Dimension (eg. 300mm x 320mm)'),
+						TextField::create('Designer'),
+						CheckboxField::create('FeaturedOnHomepage','Feature on homepage'),
+						DropdownField::create('FeaturedType')
+							->setSource (array('Popular' => 'Popular','Discount' => 'Discount','New'=> 'New Arrival'))
+							->setEmptyString('-- Select a type --'),
                         HTMLEditorField::create('Content', $this->fieldLabel('Content'))
                             ->setRows(20)
                             ->addExtraClass('stacked'),
